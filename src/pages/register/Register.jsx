@@ -6,9 +6,14 @@ import axios from "axios";
 const Register = () => {
   const [inputs, setInputs] = useState({
     username: "",
-    email: "",
-    password: "",
     name: "",
+    email: "",
+    phone: "",
+    address: "",
+    password: "",
+    website: "",
+    cover_image: "",
+    profile_image: ""
   });
   const [err, setErr] = useState(null);
 
@@ -53,9 +58,33 @@ const Register = () => {
               onChange={handleChange}
             />
             <input
+              type="text"
+              placeholder="Name"
+              name="name"
+              onChange={handleChange}
+            />
+            <input
               type="email"
               placeholder="Email"
               name="email"
+              onChange={handleChange}
+            />
+            <input
+              type="phone"
+              placeholder="Phone"
+              name="phone"
+              onChange={handleChange}
+            />
+            <input
+              type="address"
+              placeholder="Address"
+              name="address"
+              onChange={handleChange}
+            />
+            <input
+              type="website"
+              placeholder="Website"
+              name="website"
               onChange={handleChange}
             />
             <input
@@ -65,11 +94,18 @@ const Register = () => {
               onChange={handleChange}
             />
             <input
-              type="text"
-              placeholder="Name"
-              name="name"
+              type="cover_image"
+              placeholder="Cover_image"
+              name="cover_image"
               onChange={handleChange}
             />
+            <input
+              type="profile_image"
+              placeholder="Profile_image"
+              name="profile_image"
+              onChange={handleChange}
+            />
+
             {err && err}
             <button onClick={handleClick}>Register</button>
           </form>
