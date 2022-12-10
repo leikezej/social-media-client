@@ -25,7 +25,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:8800/api/auth/register", inputs);
+      await axios.post("http://localhost:8800/api/auth/signup", inputs);
     } catch (err) {
       setErr(err.response.data);
     }
@@ -94,13 +94,15 @@ const Register = () => {
               onChange={handleChange}
             />
             <input
-              type="cover_image"
+              type="file"
+              accept="image/*"
               placeholder="Cover_image"
               name="cover_image"
               onChange={handleChange}
             />
             <input
-              type="profile_image"
+              accept="image/*"
+              type="file"
               placeholder="Profile_image"
               name="profile_image"
               onChange={handleChange}
