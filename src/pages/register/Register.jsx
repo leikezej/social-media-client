@@ -11,10 +11,14 @@ import { FiEye, FiEyeOff, FiKey, FiPhone, FiUser, FiFacebook, FiGithub, FiLinked
 
 function Register() {
    const navigate = useNavigate('');
+   const [ username, setUsername ] = useState('');
    const [ name, setName ] = useState('');
    const [ email, setEmail ] = useState('');
-   const [ image, setImage ] = useState('');
    const [ phone, setPhone ] = useState('');
+   const [ address, setAddress ] = useState('');
+   const [ coverImage, setCoverImage ] = useState('');
+   const [ profileImage, setProfileImage ] = useState('');
+   const [ website, setWebsite ] = useState('');
    const [ password, setPassword ] = useState('');
    
    const [ showPassword, setShowPassword ] = useState(false);
@@ -23,7 +27,6 @@ function Register() {
    const togglePassword = () => {
     setShowPassword(!showPassword);
    };
-   
 //       useEffect(() => {
 //          if(!localStorage.getItem('accessToken')) {
 //         navigate('/')
@@ -31,13 +34,17 @@ function Register() {
 //   }, [])
    
    const handleRegister = () => {
-      console.log({ name, email, phone, password })
-      axios.post('http://localhost:272/api/auth/signup', 
+      console.log({ username, name, email, phone, address, coverImage, profileImage, website, password })
+      axios.post('http://localhost:8800/api/auth/signup', 
       {
+         username: username,
          name: name,
          email: email,
-         image: image,
          phone: phone,
+         address: address,
+         website: website,
+         coverImage: coverImage,
+         profileImage: profileImage,
          password: password
       })
          .then(res => {
@@ -73,6 +80,18 @@ function Register() {
                className="password-inputs"
                type="name" /> <br /> <br />
             
+        Username: <br /> 
+            <FiUser /> {" "}
+               <input
+               onChange={(e) => {
+                  setUsername(e.target.value)
+               }}
+               required={true}
+               placeholder="john420!@"
+               value={username}
+               className="password-inputs"
+               type="name" /> <br /> <br />
+            
             Email: <br />
              <AiOutlineMail />  {" "}
              <input
@@ -98,14 +117,50 @@ function Register() {
                 placeholder="(xxx) xxx-xxxx"
                /> <br /> <br />
                
-                           Avatar: <br />
+            Address: <br />
+             <AiOutlineMail />  {" "}
+             <input
+               required={true}
+               onChange={(e) => {
+                  setAddress(e.target.value)
+               }}
+               placeholder="Brgy.51-A, Arellano St."
+               value={address}
+               className="password-inputs"
+               type="address" /> <br /> <br />
+               
+            Website: <br />
+             <AiOutlineMail />  {" "}
+             <input
+               required={true}
+               onChange={(e) => {
+                  setWebsite(e.target.value)
+               }}
+               placeholder="https://docampaign.online/portfolio/jezekielisip"
+               value={website}
+               className="password-inputs"
+               type="website" /> <br /> <br />
+               
+        Profile Image: <br />
           <FiPhone />{" "}
              <input
                required={true}
                onChange={(e) => {
-                  setImage(e.target.value)
+                  profileImage(e.target.value)
                }}
-               value={image}
+               value={profileImage}
+               className="password-inputs"
+               type="file"
+               /> <br /> <br />
+               
+        Cover Image: <br />
+          <FiPhone />{" "}
+             <input
+               required={true}
+               onChange={(e) => {
+                  coverImage(e.target.value)
+               }}
+               value={coverImage}
                className="password-inputs"
                type="file"
                /> <br /> <br />
