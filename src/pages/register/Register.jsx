@@ -146,7 +146,7 @@ function Register() {
              <input
                required={true}
                onChange={(e) => {
-                  profileImage(e.target.value)
+                  setProfileImage(e.target.value)
                }}
                value={profileImage}
                className="password-inputs"
@@ -158,7 +158,7 @@ function Register() {
              <input
                required={true}
                onChange={(e) => {
-                  coverImage(e.target.value)
+                  setCoverImage(e.target.value)
                }}
                value={coverImage}
                className="password-inputs"
